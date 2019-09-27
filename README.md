@@ -1,11 +1,16 @@
 # kcrawler
 
+[![Build Status](https://travis-ci.org/kenblikylee/kcrawler.svg?branch=master)](https://travis-ci.org/kenblikylee/kcrawler)
+[![license](https://img.shields.io/github/license/kenblikylee/kcrawler)](https://github.com/kenblikylee/kcrawler/blob/master/LICENSE)
+
 A python crawler authored by Ken.
 
 ## 1. 安装
 
 ``` sh
 pip install kcrawler
+# or
+pip install --index-url https://pypi.org/simple kcrawler
 ```
 
 更新:

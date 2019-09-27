@@ -3,9 +3,10 @@ import re
 from .anjuke import community as anjuke_community
 from .juejin import posts as juejin_posts
 from .juejin import books as juejin_books
+from . import __version__
 
 def _print_welcom():
-    print('\n=========================================\nHi, guy! Welcome to use kcrwaler v0.0.18 !\nhttps://github.com/kenblikylee/kcrawler\n-----------------------------------------')
+    print('=========================================\nHi, guy! Welcome to use kcrwaler v{} !\nhttps://github.com/kenblikylee/kcrawler\n-----------------------------------------'.format(__version__))
 
 def _print_run(app, ver):
     _print_welcom()

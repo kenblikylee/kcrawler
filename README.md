@@ -47,7 +47,7 @@ pip install --upgrade --index-url https://pypi.org/simple kcrawler
 pip uninstall -y kcrawler
 ```
 
-## 2. 使用
+## 2. 命令行调用
 
 ### 2.1 使用方式
 
@@ -142,6 +142,28 @@ kcrawler anjuke --city shenzhen --limit 50
 命令成功运行成功后，会显示房价平均值，最大值，最小值，并绘制房价分布直方图，关闭直方图后，明细数据将保存在当前目录下，形如：`anjuke_shenzhen_community_price_20xx-xx-xx.csv`。
 
 > 获取其他城市的房价，只需将 `city` 参数改成安居客网站覆盖的城市拼音。可打开页面 [https://www.anjuke.com/sy-city.html](https://www.anjuke.com/sy-city.html) ，点击需要获取的城市，复制浏览器地址栏中城市对应的二级域名，如 beijing.anjuke.com 只取 beijing 作为 city 参数。
+
+## 3. 导入 python 模块
+
+### 3.1 Boss 接口
+
+``` python
+from kcrawler import Boss
+boss  = Boss()
+
+boss_positions = boss.position()
+boss_cities = boss.city()
+boss_hotcities = boss.hotcity()
+boss_industries = boss.industry()
+boss_user_city = boss.userCity()
+boss_expects = boss.expect()
+
+jobs = boss.job(0, 1)
+tencent_jobs = boss.queryjob(query='腾讯', city=101280600, industry=None, position=101301)
+tencent_jobs = boss.queryjobpage(query='腾讯', city=101280600, industry=None, position=101301, page=2)
+
+jobcard = boss.jobcard('3c2016bbf8413f3b1XR63t-1FVI~', '505ee74b-504b-4aea-921c-a3dc2016be80.f1:common-155-GroupA--157-GroupA.15')
+```
 
 ## Release history
 

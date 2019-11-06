@@ -67,13 +67,6 @@ class Boss:
     _conditions = None
 
     def __init__(self, headers=None):
-        if headers:
-            self._config['headers'] = headers
-        elif os.path.isfile('headers'):
-            self._config['headers'] = read_file('headers')
-            print('read heades from file.')
-        else:
-            print('\u001b[32mno headers')
         self.crawler = Crawler(self._config)
 
     # 城市

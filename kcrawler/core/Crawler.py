@@ -3,6 +3,7 @@ import requests
 from bs4 import BeautifulSoup as bs
 from PIL import Image
 from io import BytesIO
+import os
 
 def read_file(file_path):
     with open(file_path) as f:
@@ -43,6 +44,9 @@ class ABCrawler(metaclass = ABCMeta):
     def _tips(self, text):
         print('\u001b[32m{}\u001b[0m'.format(text))
     def _init(self, config):
+        if os.path.isfile('headers'):
+            config['headers'] = read_file('headers')
+            print('read heades from file.')
         if 'headers' in config:
             headers = config['headers']
             if isinstance(headers, str):
@@ -50,13 +54,19 @@ class ABCrawler(metaclass = ABCMeta):
                 config['headers'] = parse_headers(headers)
             else:
                 self._tips('headers has parseed')
+        else:
+            print('warn: no headers!!!')
         if 'targets' in config:
             self._targets = config['targets']
         else:
             self._warn('no targets')
         return config
+    def _update_headers(self):
+        if os.path.isfile('headers'):
+            self._config['headers'] = parse_headers(read_file('headers'))
     @abstractmethod
     def crawl(self, target, payload=None, urlparts=None):
+        self._update_headers()
         if not target or \
             target not in self._targets:
             self._warn('invalid target')

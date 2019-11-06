@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="kcrawler",
-    version="1.0.1",
+    version="1.1",
     author="ken",
     author_email="kenbliky@gmail.com",
     description="A python crawler authored by Ken.",
